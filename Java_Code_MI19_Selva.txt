@@ -1,0 +1,115 @@
+        try {
+        //Loading an existing document
+	      File file = new File(path_tf.getText());
+	      PDDocument document = PDDocument.load(file);
+	    //Instantiate PDFTextStripper class
+	      PDFTextStripper pdfStripper = new PDFTextStripper();
+
+	      //Retrieving text from PDF document
+	      String text = pdfStripper.getText(document);
+	      File file1 = new File("E:/MI19/Temp_document_rpt.txt");
+	      FileWriter fw = new FileWriter(file1);
+	      BufferedWriter bw = new BufferedWriter(fw);
+	      bw.write(text);
+	      bw.close();
+	      fw.close();
+	      //Closing the document
+	      document.close();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+// Report Generator
+try{
+    File file2 = new File("E:/MI19/Temp_document_rpt.txt");
+    FileReader fr = new FileReader(file2);
+    BufferedReader br = new BufferedReader(fr);
+    File file3a = new File("E:/MI19/Report_1.txt");
+    FileWriter fw = new FileWriter(file3a);
+    BufferedWriter bw = new BufferedWriter(fw);
+    	      
+    String pen = "";
+    while((pen = br.readLine())!=null){
+    if(pen.contains("FILE NUMBER")||pen.contains("POLICY NUMBER")){
+        bw.write(pen);
+        bw.newLine();
+        continue;
+    }
+    if(pen.contains("OWNER ")||pen.contains("(VIN)")||pen.contains("VEHICLE MODEL")||pen.contains("VEHICLE MAKE")||pen.contains("ESTIMATED MARKET VALUE")||pen.contains("ESTIMATED REPLACEMENT COST")||pen.contains("FUEL CAPACITY")){
+        bw.write(pen);
+        bw.newLine();
+        continue;
+    }
+    }
+    bw.close();
+    fw.close();    
+    br.close();
+    fr.close();
+}catch(Exception e){
+    
+}
+ try{
+    File file2 = new File("E:/MI19/Temp_document_rpt.txt");
+    FileReader fr = new FileReader(file2);
+    BufferedReader br = new BufferedReader(fr);
+    File file3a = new File("E:/MI19/Report_2.txt");
+    FileWriter fw = new FileWriter(file3a);
+    BufferedWriter bw = new BufferedWriter(fw);
+    int i = 0;
+    String pen = "";
+    while((pen = br.readLine())!=null){
+    if(pen.contains("ASPECT OF THE DAMAGE")){
+        i=1;
+    }
+    if(pen.contains("TOP AUTO")){
+            i=0;
+        }
+    
+        if(i==1){
+        bw.write(pen);
+        bw.newLine();
+        }
+        
+    
+    }
+    bw.close();
+    fw.close();    
+    br.close();
+    fr.close();
+}catch(Exception e){
+    
+}
+ try{
+    File file2 = new File("E:/MI19/Temp_document_rpt.txt");
+    FileReader fr = new FileReader(file2);
+    BufferedReader br = new BufferedReader(fr);
+    File file3a = new File("E:/MI19/Report_3.txt");
+    FileWriter fw = new FileWriter(file3a);
+    BufferedWriter bw = new BufferedWriter(fw);
+    int i = 0;
+    String pen = "";
+    while((pen = br.readLine())!=null){
+        if(pen.contains("TOP AUTO")||pen.contains("------------")||pen.contains("| P a g e")){
+        continue;
+        }
+        if(pen.contains("Circumstances:")){
+        i=1;
+        }
+        if(pen.contains("Comments")){
+            i=0;
+        }
+        if(i==1){
+        bw.write(pen);
+        bw.newLine();
+        }
+        
+    
+    }
+    bw.close();
+    fw.close();    
+    br.close();
+    fr.close();
+}catch(Exception e){
+    
+}
