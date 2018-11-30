@@ -1,6 +1,6 @@
-Tech Mahindra MI-19 Hackathon
-Claim Verification
-Objectives:
+#Tech Mahindra MI-19 Hackathon
+##Claim Verification
+###Objectives:
 1.Extract all claim related information from PDF such as:
     Dates
     Estimates
